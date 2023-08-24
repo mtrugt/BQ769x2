@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stdint.h": "c",
+        "*.tcc": "c",
+        "array": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "random": "c"
+    }
+}
