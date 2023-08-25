@@ -232,6 +232,8 @@ void I2C_WriteReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count)
 	}
 #else 
 	HAL_I2C_Mem_Write(&hi2c1, DEV_ADDR, reg_addr, 1, reg_data, count, 1000);
+		//										  |
+		//									reg address size	
 #endif
 }
 

@@ -332,6 +332,88 @@ el integrado BQ76942 con mayor falicidad.*/
 #define DDSGTemperature 0x7A
 #define FETStatus 0x7F
 
+//Subcommands 
+#define DEVICE_NUMBER 0x0001
+#define FW_VERSION 0x0002
+#define HW_VERSION 0x0003
+#define IROM_SIG 0x0004
+#define STATIC_CFG_SIG 0x0005
+#define PREV_MACWRITE 0x0007
+#define DROM_SIG 0x0009
+#define SECURITY_KEYS 0x0035
+#define SAVED_PF_STATUS 0x0053
+#define MANUFACTURINGSTATUS 0x0057
+#define MANU_DATA 0x0070
+#define DASTATUS1 0x0071
+#define DASTATUS2 0x0072
+#define DASTATUS3 0x0073
+#define DASTATUS4 0x0074
+#define DASTATUS5 0x0075
+#define DASTATUS6 0x0076
+#define DASTATUS7 0x0077
+#define CUV_SNAPSHOT 0x0080
+#define COV_SNAPSHOT 0X0081
+#define CB_ACTIVE_CELLS 0x0083
+#define CB_SET_LVL 0x0084
+#define CBSTATUS1 0x0085
+#define CBSTATUS2 0x0086
+#define CBSTATUS3 0x0087
+#define FET_CONTROL 0x0097
+#define REG12_CONTROL 0x0098
+#define OTP_WR_CHECK 0x00A0
+#define OTP_WRITE 0x00A1
+#define READ_CAL1 0xF081
+#define CAL_CUV 0xF090
+#define CAL_COV 0xF091
+
+// Command Only Subcommands 
+#define EXIT_DEEPSLEEP 0x000E
+#define DEEPSLEEP 0x000F
+#define SHUTDOWN 0x0010
+#define BQ769x2_RESET 0x0012 //"RESET" in documentation
+#define PDSGTEST 0x001C
+#define FUSE_TOGGLE 0x001D
+#define PCHGTEST 0x001E
+#define CHGTEST 0x001F
+#define DSGTEST 0x0020
+#define FET_ENABLE 0x0022
+#define PF_ENABLE 0x0024
+#define PF_RESET 0x0029
+#define SEAL 0x0030
+#define RESET_PASSQ 0x0082
+#define PTO_RECOVER 0x008A
+#define SET_CFGUPDATE 0x0090
+#define EXIT_CFGUPDATE 0x0092
+#define DSG_PDSG_OFF 0x0093
+#define CHG_PCHG_OFF 0x0094
+#define ALL_FETS_OFF 0x0095
+#define ALL_FETS_ON 0x0096
+#define SLEEP_ENABLE 0x0099
+#define SLEEP_DISABLE 0x009A
+#define OCDL_RECOVER 0x009B
+#define SCDL_RECOVER 0x009C
+#define LOAD_DETECT_RESTART 0x009D
+#define LOAD_DETECT_ON 0x009E
+#define LOAD_DETECT_OFF 0x009F
+#define CFETOFF_LO 0x2800
+#define DFETOFF_LO 0x2801
+#define ALERT_LO 0x2802
+#define HDQ_LO 0x2806
+#define DCHG_LO 0x2807
+#define DDSG_LO 0x2808
+#define CFETOFF_HI 0x2810
+#define DFETOFF_HI 0x2811
+#define ALERT_HI 0x2812
+#define HDQ_HI 0x2816
+#define DCHG_HI 0x2817
+#define DDSG_HI 0x2818
+#define PF_FORCE_A 0x2857
+#define PF_FORCE_B 0x29A3
+#define SWAP_COMM_MODE 0x29BC
+#define SWAP_TO_I2C 0x29E7
+#define SWAP_TO_SPI 0x7C35
+#define SWAP_TO_HDQ 0x7C40
+
 
 
 //----------------------------------LIBRERIAS----------------------------------
@@ -361,6 +443,18 @@ public:
      * 
     */
     void begin();
+
+
+    /**
+     * @brief
+     * Esta función permite configurar al integrado a ciertos valores por defecto  
+     * que el usuario puede modificar a conveniencia en esta librería. Se recomienda para 
+     * una configuración que permita realizar una prueba para verificar que microcontrolador y
+     * el integrado estén funcionando correctamente.
+     * 
+     * 
+    */
+    void defaultSettings();
 
 
     /**
@@ -399,7 +493,9 @@ public:
      */
     uint8_t requestRegisters (uint8_t reg, uint8_t size );
 
-    uint8_t write2Register(uint8_t reg, uint8_t data);
+    uint8_t i2cWrite(uint8_t reg, uint8_t* data, uint8_t size);
+
+
 
 
     /**
@@ -411,6 +507,20 @@ public:
      * 
     */
     uint16_t readCellVoltage ( uint8_t Ncell );
+
+
+
+    // A partir de este punto el código está basado en los ejemplos proporcionados por el fabricante
+    // y modificado para poder ser utilizado en el microcontrolador esp32.
+
+
+    void i2cWriteReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count);
+
+    void bqSetRegister(uint16_t reg_addr, uint32_t reg_data, uint8_t datalen);
+
+    void CommandSubcommands(uint16_t command);
+
+
 
 };
 
