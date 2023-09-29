@@ -16,19 +16,14 @@
 void tryBuffSerial( uint8_t* data,  uint8_t size );
 
 //----------------------------------VARIABLES----------------------------------
-uint8_t i2c_status = 0;
-uint8_t i2c_data = 0;
 uint8_t check = 0;
 uint16_t voltaje = 0;
 
-uint8_t i = 0;
-uint8_t data = 0;
+bool bit = 0;
 
 BQ76942 BMS1( BMS_address );
 
-uint8_t tryarray[] = {0x01, 0x02, 0x03};
-
-
+bool okflag = 0;
 
 //----------------------------------CODIGO PRINCIPAL----------------------------------
 void setup() {
@@ -43,43 +38,88 @@ void setup() {
   check = BMS1.checkConnection();
   if( check == 0){
     Serial.println("Conexión exitosa");
+    okflag = 1;
   }
   else{
     Serial.printf("Error de conexión, codigo: %d ", check);
+    okflag = 0;
   }
 
-  //Probando la funcion readCellVoltage para leer voltajes de celdas
-  Serial.println("Leyendo registro ");
-  voltaje = BMS1.readCellVoltage(10);
-  Serial.println(voltaje, HEX);
+  if(okflag) //Si la comunicacion es exitosa
+  {
+    //Probando la funcion readCellVoltage para leer voltajes de celdas
+    Serial.println("Leyendo voltaje de celda 10 ");
+    voltaje = BMS1.readCellVoltage(10);
+    Serial.println(voltaje);
 
-  //Hacer una prueba de escritura a los registros del BQ76942
-  Serial.println("Leyendo registro Protecciones A ");
-  BMS1.requestRegisters(0x02, 1);
-  while ( Wire.available() ){
-        data = Wire.read();
-        Serial.println(data, BIN);
-        // i++;
+    //___Hacer una prueba de escritura a la configuracion del BQ76942___
+    //Leer registros antes de la sobreescritura
+    Serial.println("Lectura de <Enable protections A> antes del cambio:");
+    Serial.println(BMS1.readEnableProtectionsA(), HEX);
+
+    Serial.println("Modificando la configuración...");
+    BMS1.defaultSettings();
+
+    Serial.println("Lectura de <Enable protections A> después del cambio:");
+    Serial.println(BMS1.readEnableProtectionsA(), HEX);
+
+    //Realizar una prueba de lectura de subcomando
+    Serial.println("Leyendo subcomando: Device Number");
+    Serial.println(BMS1.readDeviceNo());
+
+    //_______________________________Pruebas de funciones de usuario______________________________
+    
+    Serial.println("Leyendo bit safetyAlertsA.COV:");
+    bit = BMS1.safetyAlertA_bits().COV;
+    Serial.println(bit);
+
+    Serial.println("Leyendo bit safetyStatusA.OCD2:");
+    bit = BMS1.safetyStatusA_bits().OCD2;
+    Serial.println(bit);
+
+
+    Serial.println("Leyendo bit safetyAlertsB.OTF:");
+    bit = BMS1.safetyAlertB_bits().OTF;
+    Serial.println(bit);
+
+    Serial.println("Leyendo bit safetyStatusB.UTINT:");
+    bit = BMS1.safetyStatusB_bits().UTINT;
+    Serial.println(bit);
+
+    //Modificar el registro Enable protections A
+    Serial.println("Leyendo EnableProtectionsA antes del cambio:");
+    Serial.println(BMS1.readEnableProtectionsA());
+
+    BMS1.writeEnableProtectionsA(0xBB);
+
+    Serial.println("Leyendo EnableProtectionsA después del cambio:");
+    Serial.println(BMS1.readEnableProtectionsA());
+
+    Serial.println("/n ___Leazilar un cambio bitwise a Enable protections A___");
+    Serial.println("Leyendo bit EnableProtectonsA.OCC antes del cambio:");
+    bit = BMS1.readEnableProtectionsA_bits().OCC;
+    Serial.println(bit);
+
+    BMS1.writeEnableProtectionsA_OCC(0);
+
+    Serial.println("Leyendo bit EnableProtectonsA.OCC después del cambio:");
+    bit = BMS1.readEnableProtectionsA_bits().OCC;
+    Serial.println(bit);
+
+
   }
 
-  BMS1.defaultSettings();
-
- 
-  
-  Serial.println("Leyendo registro Protecciones A modificado");
-  BMS1.requestRegisters(0x02, 1);
-  while ( Wire.available() ){
-        data = Wire.read();
-        Serial.println(data, BIN);
-        // i++;
-  }
 
 
 
 }
  
 void loop() {
-  delay(5000);
+  Serial.println("FIN");
+  while (1)
+  {
+    /* code */
+  }
  
 }
 

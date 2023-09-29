@@ -151,12 +151,12 @@ static void MX_I2C1_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_TIM1_Init(void);
 /* USER CODE BEGIN PFP */
-void delayUS(uint32_t us) {   // Sets the delay in microseconds.
+void delayUS(uint32_t us) {   // Sets the delay in microseconds.			//NA
 	__HAL_TIM_SET_COUNTER(&htim1,0);  // set the counter value a 0
 	while (__HAL_TIM_GET_COUNTER(&htim1) < us);  // wait for the counter to reach the us input in the parameter
 }
 
-void CopyArray(uint8_t *source, uint8_t *dest, uint8_t count)
+void CopyArray(uint8_t *source, uint8_t *dest, uint8_t count)				
 {
     uint8_t copyIndex = 0;
     for (copyIndex = 0; copyIndex < count; copyIndex++)
@@ -165,9 +165,8 @@ void CopyArray(uint8_t *source, uint8_t *dest, uint8_t count)
     }
 }
 
-unsigned char Checksum(unsigned char *ptr, unsigned char len)
-// Calculates the checksum when writing to a RAM register. The checksum is the inverse of the sum of the bytes.	
-{
+unsigned char Checksum(unsigned char *ptr, unsigned char len)				//YES
+{// Calculates the checksum when writing to a RAM register. The checksum is the inverse of the sum of the bytes.	
 	unsigned char i;
 	unsigned char checksum = 0;
 
@@ -179,9 +178,8 @@ unsigned char Checksum(unsigned char *ptr, unsigned char len)
 	return(checksum);
 }
 
-unsigned char CRC8(unsigned char *ptr, unsigned char len)
-//Calculates CRC8 for passed bytes. Used in i2c read and write functions 
-{
+unsigned char CRC8(unsigned char *ptr, unsigned char len)					//YES 
+{//Calculates CRC8 for passed bytes. Used in i2c read and write functions
 	unsigned char i;
 	unsigned char crc=0;
 	while(len--!=0)
@@ -204,7 +202,7 @@ unsigned char CRC8(unsigned char *ptr, unsigned char len)
 	return(crc);
 }
 
-void I2C_WriteReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count)
+void I2C_WriteReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count)		//YES
 {
 	uint8_t TX_Buffer [MAX_BUFFER_SIZE] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
 #if CRC_Mode
@@ -237,7 +235,7 @@ void I2C_WriteReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count)
 #endif
 }
 
-int I2C_ReadReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count)
+int I2C_ReadReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count)			//YES
 {
 	unsigned int RX_CRC_Fail = 0;  // reset to 0. If in CRC Mode and CRC fails, this will be incremented.
 	uint8_t RX_Buffer [MAX_BUFFER_SIZE] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};
@@ -279,7 +277,7 @@ int I2C_ReadReg(uint8_t reg_addr, uint8_t *reg_data, uint8_t count)
 	return 0;
 }
 
-void BQ769x2_SetRegister(uint16_t reg_addr, uint32_t reg_data, uint8_t datalen)
+void BQ769x2_SetRegister(uint16_t reg_addr, uint32_t reg_data, uint8_t datalen)		//YES
 {
 	uint8_t TX_Buffer[2] = {0x00, 0x00};
 	uint8_t TX_RegData[6] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -322,9 +320,9 @@ void BQ769x2_SetRegister(uint16_t reg_addr, uint32_t reg_data, uint8_t datalen)
     }
 }
 
-void CommandSubcommands(uint16_t command) //For Command only Subcommands
-// See the TRM or the BQ76952 header file for a full list of Command-only subcommands
+void CommandSubcommands(uint16_t command) //For Command only Subcommands			//YES
 {	//For DEEPSLEEP/SHUTDOWN subcommand you will need to call this function twice consecutively
+	// See the TRM or the BQ76952 header file for a full list of Command-only subcommands
 	
 	uint8_t TX_Reg[2] = {0x00, 0x00};
 
@@ -442,7 +440,7 @@ void BQ769x2_Init() {
 	// Enable protections in 'Enabled Protections A' 0x9261 = 0xBC
 	// Enables SCD (short-circuit), OCD1 (over-current in discharge), OCC (over-current in charge),
 	// COV (over-voltage), CUV (under-voltage)
-	BQ769x2_SetRegister(EnabledProtectionsA, 0xBC, 1);
+	BQ769x2_SetRegister(EnabledProtectionsA, 0xBC, 1); 
 
 	// Enable all protections in 'Enabled Protections B' 0x9262 = 0xF7
 	// Enables OTF (over-temperature FET), OTINT (internal over-temperature), OTD (over-temperature in discharge),

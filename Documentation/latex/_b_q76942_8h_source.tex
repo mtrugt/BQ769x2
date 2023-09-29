@@ -1,0 +1,476 @@
+\doxysection{BQ76942.\+h}
+\hypertarget{_b_q76942_8h_source}{}\label{_b_q76942_8h_source}\index{C:/Users/maqui/Documents/GitHub/BQ769x2/BQ769x2\_ESP32/lib/BQ76942/BQ76942.h@{C:/Users/maqui/Documents/GitHub/BQ769x2/BQ769x2\_ESP32/lib/BQ76942/BQ76942.h}}
+\mbox{\hyperlink{_b_q76942_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_BQ76942\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_BQ76942\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \ \ }
+\DoxyCodeLine{00005\ \textcolor{comment}{/*Esta\ libreria\ incluye\ distintas\ funciones\ para\ poder\ operar}}
+\DoxyCodeLine{00006\ \textcolor{comment}{el\ integrado\ BQ76942\ con\ mayor\ falicidad.*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/DEFINICIONES-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//Data\ \ Memory\ \ registers\ \ \ Name\ in\ TRM}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ Cell1Gain\ 0x9180\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 1\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ Cell2Gain\ 0x9182\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 2\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ Cell3Gain\ 0x9184\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 3\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ Cell4Gain\ 0x9186\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 4\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ Cell5Gain\ 0x9188\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 5\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ Cell6Gain\ 0x918A\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 6\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ Cell7Gain\ 0x918C\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 7\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ Cell8Gain\ 0x918E\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 8\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ Cell9Gain\ 0x9190\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 9\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ Cell10Gain\ 0x9192\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 10\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ Cell11Gain\ 0x9194\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 11\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ Cell12Gain\ 0x9196\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 12\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ Cell13Gain\ 0x9198\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 13\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ Cell14Gain\ 0x919A\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 14\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ Cell15Gain\ 0x919C\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 15\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ Cell16Gain\ 0x919E\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Cell\ 16\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ PackGain\ 0x91A0\ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:Pack\ Gain\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ TOSGain\ 0x91A2\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:TOS\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ LDGain\ 0x91A4\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:LD\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ ADCGain\ 0x91A6\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Voltage:ADC\ Gain\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ CCGain\ 0x91A8\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Current:CC\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ CapacityGain\ 0x91AC\ \ \ \ }\textcolor{comment}{//Calibration:Current:Capacity\ Gain\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ VcellOffset\ 0x91B0\ \ \ \ \ }\textcolor{comment}{//Calibration:Vcell\ Offset:Vcell\ Offset\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ VdivOffset\ 0x91B2\ \ \ \ \ \ }\textcolor{comment}{//Calibration:V\ Divider\ Offset:Vdiv\ Offset\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ CoulombCounterOffsetSamples\ 0x91C6\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Current\ Offset:Coulomb\ Counter\ Offset\ Samples\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ BoardOffset\ 0x91C8\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Current\ Offset:Board\ Offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ InternalTempOffset\ 0x91CA\ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:Internal\ Temp\ Offset\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ CFETOFFTempOffset\ 0x91CB\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:CFETOFF\ Temp\ Offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ DFETOFFTempOffset\ 0x91CC\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:DFETOFF\ Temp\ Offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ ALERTTempOffset\ 0x91CD\ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:ALERT\ Temp\ Offset\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ TS1TempOffset\ 0x91CE\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:TS1\ Temp\ Offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ TS2TempOffset\ 0x91CF\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:TS2\ Temp\ Offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ TS3TempOffset\ 0x91D0\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:TS3\ Temp\ Offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ HDQTempOffset\ 0x91D1\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:HDQ\ Temp\ Offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ DCHGTempOffset\ 0x91D2\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:DCHG\ Temp\ Offset\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ DDSGTempOffset\ 0x91D3\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Temperature:DDSG\ Temp\ Offset\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ IntGain\ 0x91E2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Internal\ Temp\ Model:Int\ Gain\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ Intbaseoffset\ 0x91E4\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Internal\ Temp\ Model:Int\ base\ offset\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ IntMaximumAD\ 0x91E6\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Internal\ Temp\ Model:Int\ Maximum\ AD\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ IntMaximumTemp\ 0x91E8\ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:Internal\ Temp\ Model:Int\ Maximum\ Temp\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ T18kCoeffa1\ 0x91EA\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ a1\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ T18kCoeffa2\ 0x91EC\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ a2\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ T18kCoeffa3\ 0x91EE\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ a3\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ T18kCoeffa4\ 0x91F0\ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ a4\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ T18kCoeffa5\ 0x91F2\ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ a5\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ T18kCoeffb1\ 0x91F4\ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ b1\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ T18kCoeffb2\ 0x91F6\ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ b2\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ T18kCoeffb3\ 0x91F8\ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ b3\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ T18kCoeffb4\ 0x91FA\ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Coeff\ b4\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ T18kAdc0\ 0x91FE\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:18K\ Temperature\ Model:Adc0\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ T180kCoeffa1\ 0x9200\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ a1\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ T180kCoeffa2\ 0x9202\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ a2\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ T180kCoeffa3\ 0x9204\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ a3\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ T180kCoeffa4\ 0x9206\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ a4\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ T180kCoeffa5\ 0x9208\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ a5\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ T180kCoeffb1\ 0x920A\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ b1\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ T180kCoeffb2\ 0x920C\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ b2\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ T180kCoeffb3\ 0x920E\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ b3\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ T180kCoeffb4\ 0x9210\ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Coeff\ b4\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ T180kAdc0\ 0x9214\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Calibration:180K\ Temperature\ Model:Adc0\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ CustomCoeffa1\ 0x9216\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ a1\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ CustomCoeffa2\ 0x9218\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ a2\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ CustomCoeffa3\ 0x921A\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ a3\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ CustomCoeffa4\ 0x921C\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ a4\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ CustomCoeffa5\ 0x921E\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ a5\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ CustomCoeffb1\ 0x9220\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ b1\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ CustomCoeffb2\ 0x9222\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ b2\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ CustomCoeffb3\ 0x9224\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ b3\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ CustomCoeffb4\ 0x9226\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Coeff\ b4\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ CustomRc0\ 0x9228\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Rc0\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ CustomAdc0\ 0x922A\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Custom\ Temperature\ Model:Adc0\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ CoulombCounterDeadband\ 0x922D\ \ \ \ \ \ }\textcolor{comment}{//Calibration:Current\ Deadband:Coulomb\ Counter\ Deadband\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ CUVThresholdOverride\ 0x91D4\ \ \ \ \ \ }\textcolor{comment}{//Calibration:CUV:CUV\ Threshold\ Override\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ COVThresholdOverride\ 0x91D6\ \ \ \ \ \ }\textcolor{comment}{//Calibration:COV:COV\ Threshold\ Override\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ MinBlowFuseVoltage\ 0x9231\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Fuse:Min\ Blow\ Fuse\ Voltage\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ FuseBlowTimeout\ 0x9233\ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Fuse:Fuse\ Blow\ Timeout\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ PowerConfig\ 0x9234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:Power\ Config\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ REG12Config\ 0x9236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:REG12\ Config\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ REG0Config\ 0x9237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:REG0\ Config\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ HWDRegulatorOptions\ 0x9238\ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:HWD\ Regulator\ Options\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ CommType\ 0x9239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:Comm\ Type\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ I2CAddress\ 0x923A\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:I2C\ Address\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ SPIConfiguration\ 0x923C\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:SPI\ Configuration\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ CommIdleTime\ 0x923D\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:Comm\ Idle\ Time\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\#define\ CFETOFFPinConfig\ 0x92FA\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:CFETOFF\ Pin\ Config\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ DFETOFFPinConfig\ 0x92FB\ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:DFETOFF\ Pin\ Config\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#define\ ALERTPinConfig\ 0x92FC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:ALERT\ Pin\ Config\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#define\ TS1Config\ 0x92FD\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:TS1\ Config\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#define\ TS2Config\ 0x92FE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:TS2\ Config\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ TS3Config\ 0x92FF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:TS3\ Config\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ HDQPinConfig\ 0x9300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:HDQ\ Pin\ Config\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ DCHGPinConfig\ 0x9301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:DCHG\ Pin\ Config\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ DDSGPinConfig\ 0x9302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:DDSG\ Pin\ Config\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ DAConfiguration\ 0x9303\ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:DA\ Configuration\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ VCellMode\ 0x9304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:Vcell\ Mode\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ CC3Samples\ 0x9307\ \ \ \ \ \ }\textcolor{comment}{//Settings:Configuration:CC3\ Samples\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ ProtectionConfiguration\ 0x925F\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:Protection\ Configuration\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ EnabledProtectionsA\ 0x9261\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:Enabled\ Protections\ A\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ EnabledProtectionsB\ 0x9262\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:Enabled\ Protections\ B\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ EnabledProtectionsC\ 0x9263\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:Enabled\ Protections\ C\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ CHGFETProtectionsA\ 0x9265\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:CHG\ FET\ Protections\ A\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ CHGFETProtectionsB\ 0x9266\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:CHG\ FET\ Protections\ B\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ CHGFETProtectionsC\ 0x9267\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:CHG\ FET\ Protections\ C\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ DSGFETProtectionsA\ 0x9269\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:DSG\ FET\ Protections\ A\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ DSGFETProtectionsB\ 0x926A\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:DSG\ FET\ Protections\ B\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#define\ DSGFETProtectionsC\ 0x926B\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:DSG\ FET\ Protections\ C\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ BodyDiodeThreshold\ 0x9273\ \ \ \ \ \ }\textcolor{comment}{//Settings:Protection:Body\ Diode\ Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ DefaultAlarmMask\ 0x926D\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:Default\ Alarm\ Mask\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ SFAlertMaskA\ 0x926F\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:SF\ Alert\ Mask\ A\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ SFAlertMaskB\ 0x9270\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:SF\ Alert\ Mask\ B\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ SFAlertMaskC\ 0x9271\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:SF\ Alert\ Mask\ C\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ PFAlertMaskA\ 0x92C4\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:PF\ Alert\ Mask\ A\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ PFAlertMaskB\ 0x92C5\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:PF\ Alert\ Mask\ B\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ PFAlertMaskC\ 0x92C6\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:PF\ Alert\ Mask\ C\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ PFAlertMaskD\ 0x92C7\ \ \ \ \ \ }\textcolor{comment}{//Settings:Alarm:PF\ Alert\ Mask\ D\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ EnabledPFA\ 0x92C0\ \ \ \ \ \ }\textcolor{comment}{//Settings:Permanent\ Failure:Enabled\ PF\ A\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ EnabledPFB\ 0x92C1\ \ \ \ \ \ }\textcolor{comment}{//Settings:Permanent\ Failure:Enabled\ PF\ B\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ EnabledPFC\ 0x92C2\ \ \ \ \ \ }\textcolor{comment}{//Settings:Permanent\ Failure:Enabled\ PF\ C\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#define\ EnabledPFD\ 0x92C3\ \ \ \ \ \ }\textcolor{comment}{//Settings:Permanent\ Failure:Enabled\ PF\ D\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#define\ FETOptions\ 0x9308\ \ \ \ \ \ }\textcolor{comment}{//Settings:FET:FET\ Options\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ ChgPumpControl\ 0x9309\ \ \ \ \ \ }\textcolor{comment}{//Settings:FET:Chg\ Pump\ Control\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ PrechargeStartVoltage\ 0x930A\ \ \ \ \ \ }\textcolor{comment}{//Settings:FET:Precharge\ Start\ Voltage\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ PrechargeStopVoltage\ 0x930C\ \ \ \ \ \ }\textcolor{comment}{//Settings:FET:Precharge\ Stop\ Voltage\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ PredischargeTimeout\ 0x930E\ \ \ \ \ \ }\textcolor{comment}{//Settings:FET:Predischarge\ Timeout\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ PredischargeStopDelta\ 0x930F\ \ \ \ \ \ }\textcolor{comment}{//Settings:FET:Predischarge\ Stop\ Delta\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ DsgCurrentThreshold\ 0x9310\ \ \ \ \ \ }\textcolor{comment}{//Settings:Current\ Thresholds:Dsg\ Current\ Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ ChgCurrentThreshold\ 0x9312\ \ \ \ \ \ }\textcolor{comment}{//Settings:Current\ Thresholds:Chg\ Current\ Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ CheckTime\ 0x9314\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Open-\/Wire:Check\ Time\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ Cell1Interconnect\ 0x9315\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 1\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ Cell2Interconnect\ 0x9317\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 2\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ Cell3Interconnect\ 0x9319\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 3\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ Cell4Interconnect\ 0x931B\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 4\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ Cell5Interconnect\ 0x931D\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 5\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ Cell6Interconnect\ 0x931F\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 6\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ Cell7Interconnect\ 0x9321\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 7\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ Cell8Interconnect\ 0x9323\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 8\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ Cell9Interconnect\ 0x9325\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 9\ Interconnect\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ Cell10Interconnect\ 0x9327\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 10\ Interconnect\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ Cell11Interconnect\ 0x9329\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 11\ Interconnect\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ Cell12Interconnect\ 0x932B\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 12\ Interconnect\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\#define\ Cell13Interconnect\ 0x932D\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 13\ Interconnect\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ Cell14Interconnect\ 0x932F\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 14\ Interconnect\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ Cell15Interconnect\ 0x9331\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 15\ Interconnect\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ Cell16Interconnect\ 0x9333\ \ \ \ \ \ }\textcolor{comment}{//Settings:Interconnect\ Resistances:Cell\ 16\ Interconnect\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ MfgStatusInit\ 0x9343\ \ \ \ \ \ }\textcolor{comment}{//Settings:Manufacturing:Mfg\ Status\ Init\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ BalancingConfiguration\ 0x9335\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Balancing\ Configuration\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ MinCellTemp\ 0x9336\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Min\ Cell\ Temp\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ MaxCellTemp\ 0x9337\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Max\ Cell\ Temp\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\#define\ MaxInternalTemp\ 0x9338\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Max\ Internal\ Temp\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ CellBalanceInterval\ 0x9339\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Interval\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ CellBalanceMaxCells\ 0x933A\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Max\ Cells\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ CellBalanceMinCellVCharge\ 0x933B\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Min\ Cell\ V\ (Charge)\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ CellBalanceMinDeltaCharge\ 0x933D\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Min\ Delta\ (Charge)\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ CellBalanceStopDeltaCharge\ 0x933E\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Stop\ Delta\ (Charge)\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ CellBalanceMinCellVRelax\ 0x933F\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Min\ Cell\ V\ (Relax)\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ CellBalanceMinDeltaRelax\ 0x9341\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Min\ Delta\ (Relax)\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ CellBalanceStopDeltaRelax\ 0x9342\ \ \ \ \ \ }\textcolor{comment}{//Settings:Cell\ Balancing\ Config:Cell\ Balance\ Stop\ Delta\ (Relax)\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ ShutdownCellVoltage\ 0x923F\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:Shutdown\ Cell\ Voltage\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00168\ \textcolor{preprocessor}{\#define\ ShutdownStackVoltage\ 0x9241\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:Shutdown\ Stack\ Voltage\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ LowVShutdownDelay\ 0x9243\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:Low\ V\ Shutdown\ Delay\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ ShutdownTemperature\ 0x9244\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:Shutdown\ Temperature\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ ShutdownTemperatureDelay\ 0x9245\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:Shutdown\ Temperature\ Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ FETOffDelay\ 0x9252\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:FET\ Off\ Delay\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ ShutdownCommandDelay\ 0x9253\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:Shutdown\ Command\ Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ AutoShutdownTime\ 0x9254\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:Auto\ Shutdown\ Time\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ RAMFailShutdownTime\ 0x9255\ \ \ \ \ \ }\textcolor{comment}{//Power:Shutdown:RAM\ Fail\ Shutdown\ Time\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ SleepCurrent\ 0x9248\ \ \ \ \ \ }\textcolor{comment}{//Power:Sleep:Sleep\ Current\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ VoltageTime\ 0x924A\ \ \ \ \ \ }\textcolor{comment}{//Power:Sleep:Voltage\ Time\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ WakeComparatorCurrent\ 0x924B\ \ \ \ \ \ }\textcolor{comment}{//Power:Sleep:Wake\ Comparator\ Current\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00179\ \textcolor{preprocessor}{\#define\ SleepHysteresisTime\ 0x924D\ \ \ \ \ \ }\textcolor{comment}{//Power:Sleep:Sleep\ Hysteresis\ Time\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ SleepChargerVoltageThreshold\ 0x924E\ \ \ \ \ \ }\textcolor{comment}{//Power:Sleep:Sleep\ Charger\ Voltage\ Threshold\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ SleepChargerPACKTOSDelta\ 0x9250\ \ \ \ \ \ }\textcolor{comment}{//Power:Sleep:Sleep\ Charger\ PACK-\/TOS\ Delta\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#define\ ConfigRAMSignature\ 0x91E0\ \ \ \ \ \ }\textcolor{comment}{//System\ Data:Integrity:Config\ RAM\ Signature\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#define\ CUVThreshold\ 0x9275\ \ \ \ \ \ }\textcolor{comment}{//Protections:CUV:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ CUVDelay\ 0x9276\ \ \ \ \ \ }\textcolor{comment}{//Protections:CUV:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ CUVRecoveryHysteresis\ 0x927B\ \ \ \ \ \ }\textcolor{comment}{//Protections:CUV:Recovery\ Hysteresis\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ COVThreshold\ 0x9278\ \ \ \ \ \ }\textcolor{comment}{//Protections:COV:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ COVDelay\ 0x9279\ \ \ \ \ \ }\textcolor{comment}{//Protections:COV:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ COVRecoveryHysteresis\ 0x927C\ \ \ \ \ \ }\textcolor{comment}{//Protections:COV:Recovery\ Hysteresis\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#define\ COVLLatchLimit\ 0x927D\ \ \ \ \ \ }\textcolor{comment}{//Protections:COVL:Latch\ Limit\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00190\ \textcolor{preprocessor}{\#define\ COVLCounterDecDelay\ 0x927E\ \ \ \ \ \ }\textcolor{comment}{//Protections:COVL:Counter\ Dec\ Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#define\ COVLRecoveryTime\ 0x927F\ \ \ \ \ \ }\textcolor{comment}{//Protections:COVL:Recovery\ Time\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#define\ OCCThreshold\ 0x9280\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCC:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ OCCDelay\ 0x9281\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCC:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00194\ \textcolor{preprocessor}{\#define\ OCCRecoveryThreshold\ 0x9288\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCC:Recovery\ Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00195\ \textcolor{preprocessor}{\#define\ OCCPACKTOSDelta\ 0x92B0\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCC:PACK-\/TOS\ Delta\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00196\ \textcolor{preprocessor}{\#define\ OCD1Threshold\ 0x9282\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCD1:Threshold\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00197\ \textcolor{preprocessor}{\#define\ OCD1Delay\ 0x9283\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCD1:Delay\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00198\ \textcolor{preprocessor}{\#define\ OCD2Threshold\ 0x9284\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCD2:Threshold\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00199\ \textcolor{preprocessor}{\#define\ OCD2Delay\ 0x9285\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCD2:Delay\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00200\ \textcolor{preprocessor}{\#define\ SCDThreshold\ 0x9286\ \ \ \ \ \ }\textcolor{comment}{//Protections:SCD:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#define\ SCDDelay\ 0x9287\ \ \ \ \ \ }\textcolor{comment}{//Protections:SCD:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00202\ \textcolor{preprocessor}{\#define\ SCDRecoveryTime\ 0x9294\ \ \ \ \ \ }\textcolor{comment}{//Protections:SCD:Recovery\ Time\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ OCD3Threshold\ 0x928A\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCD3:Threshold\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ OCD3Delay\ 0x928C\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCD3:Delay\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ OCDRecoveryThreshold\ 0x928D\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCD:Recovery\ Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ OCDLLatchLimit\ 0x928F\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCDL:Latch\ Limit\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ OCDLCounterDecDelay\ 0x9290\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCDL:Counter\ Dec\ Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ OCDLRecoveryTime\ 0x9291\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCDL:Recovery\ Time\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ OCDLRecoveryThreshold\ 0x9292\ \ \ \ \ \ }\textcolor{comment}{//Protections:OCDL:Recovery\ Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ SCDLLatchLimit\ 0x9295\ \ \ \ \ \ }\textcolor{comment}{//Protections:SCDL:Latch\ Limit\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ SCDLCounterDecDelay\ 0x9296\ \ \ \ \ \ }\textcolor{comment}{//Protections:SCDL:Counter\ Dec\ Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#define\ SCDLRecoveryTime\ 0x9297\ \ \ \ \ \ }\textcolor{comment}{//Protections:SCDL:Recovery\ Time\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ SCDLRecoveryThreshold\ 0x9298\ \ \ \ \ \ }\textcolor{comment}{//Protections:SCDL:Recovery\ Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ OTCThreshold\ 0x929A\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTC:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00215\ \textcolor{preprocessor}{\#define\ OTCDelay\ 0x920B\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTC:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#define\ OTCRecovery\ 0x929C\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTC:Recovery\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00217\ \textcolor{preprocessor}{\#define\ OTDThreshold\ 0x929D\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTD:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00218\ \textcolor{preprocessor}{\#define\ OTDDelay\ 0x929E\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTD:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00219\ \textcolor{preprocessor}{\#define\ OTDRecovery\ 0x929F\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTD:Recovery\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00220\ \textcolor{preprocessor}{\#define\ OTFThreshold\ 0x92A0\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTF:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00221\ \textcolor{preprocessor}{\#define\ OTFDelay\ 0x92A1\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTF:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#define\ OTFRecovery\ 0x92A2\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTF:Recovery\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ OTINTThreshold\ 0x92A3\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTINT:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#define\ OTINTDelay\ 0x92A4\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTINT:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00225\ \textcolor{preprocessor}{\#define\ OTINTRecovery\ 0x92A5\ \ \ \ \ \ }\textcolor{comment}{//Protections:OTINT:Recovery\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00226\ \textcolor{preprocessor}{\#define\ UTCThreshold\ 0x92A6\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTC:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ UTCDelay\ 0x92A7\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTC:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ UTCRecovery\ 0x92A8\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTC:Recovery\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#define\ UTDThreshold\ 0x92A9\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTD:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ UTDDelay\ 0x92AA\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTD:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#define\ UTDRecovery\ 0x92AB\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTD:Recovery\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ UTINTThreshold\ 0x92AC\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTINT:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ UTINTDelay\ 0x92AD\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTINT:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#define\ UTINTRecovery\ 0x92AE\ \ \ \ \ \ }\textcolor{comment}{//Protections:UTINT:Recovery\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ ProtectionsRecoveryTime\ 0x92AF\ \ \ \ \ \ }\textcolor{comment}{//Protections:Recovery:Time\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#define\ HWDDelay\ 0x92B2\ \ \ \ \ \ }\textcolor{comment}{//Protections:HWD:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#define\ LoadDetectActiveTime\ 0x92B4\ \ \ \ \ \ }\textcolor{comment}{//Protections:Load\ Detect:Active\ Time\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#define\ LoadDetectRetryDelay\ 0x92B5\ \ \ \ \ \ }\textcolor{comment}{//Protections:Load\ Detect:Retry\ Delay\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#define\ LoadDetectTimeout\ 0x92B6\ \ \ \ \ \ }\textcolor{comment}{//Protections:Load\ Detect:Timeout\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#define\ PTOChargeThreshold\ 0x92BA\ \ \ \ \ \ }\textcolor{comment}{//Protections:PTO:Charge\ Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ PTODelay\ 0x92BC\ \ \ \ \ \ }\textcolor{comment}{//Protections:PTO:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#define\ PTOReset\ 0x92BE\ \ \ \ \ \ }\textcolor{comment}{//Protections:PTO:Reset\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00243\ \textcolor{preprocessor}{\#define\ CUDEPThreshold\ 0x92C8\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:CUDEP:Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00244\ \textcolor{preprocessor}{\#define\ CUDEPDelay\ 0x92CA\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:CUDEP:Delay\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\#define\ SUVThreshold\ 0x92CB\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SUV:Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#define\ SUVDelay\ 0x92CD\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SUV:Delay\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\#define\ SOVThreshold\ 0x92CE\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOV:Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00248\ \textcolor{preprocessor}{\#define\ SOVDelay\ 0x92D0\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOV:Delay\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\#define\ TOSSThreshold\ 0x92D1\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:TOS:Threshold\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00250\ \textcolor{preprocessor}{\#define\ TOSSDelay\ 0x92D3\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:TOS:Delay\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00251\ \textcolor{preprocessor}{\#define\ SOCCThreshold\ 0x92D4\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOCC:Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00252\ \textcolor{preprocessor}{\#define\ SOCCDelay\ 0x92D6\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOCC:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\#define\ SOCDThreshold\ 0x92D7\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOCD:Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00254\ \textcolor{preprocessor}{\#define\ SOCDDelay\ 0x92D9\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOCD:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\#define\ SOTThreshold\ 0x92DA\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOT:Threshold\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\#define\ SOTDelay\ 0x92DB\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOT:Delay\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\#define\ SOTFThreshold\ 0x92DC\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOTF:Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#define\ SOTFDelay\ 0x92DD\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:SOTF:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#define\ VIMRCheckVoltage\ 0x92DE\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMR:Check\ Voltage\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#define\ VIMRMaxRelaxCurrent\ 0x92E0\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMR:Max\ Relax\ Current\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#define\ VIMRThreshold\ 0x92E2\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMR:Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#define\ VIMRDelay\ 0x92E4\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMR:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#define\ VIMRRelaxMinDuration\ 0x92E5\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMR:Relax\ Min\ Duration\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#define\ VIMACheckVoltage\ 0x92E7\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMA:Check\ Voltage\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#define\ VIMAMinActiveCurrent\ 0x92E9\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMA:Min\ Active\ Current\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#define\ VIMAThreshold\ 0x92EB\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMA:Threshold\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00267\ \textcolor{preprocessor}{\#define\ VIMADelay\ 0x92ED\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VIMA:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#define\ CFETFOFFThreshold\ 0x92EE\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:CFETF:OFF\ Threshold\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#define\ CFETFOFFDelay\ 0x92F0\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:CFETF:OFF\ Delay\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#define\ DFETFOFFThreshold\ 0x92F1\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:DFETF:OFF\ Threshold\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#define\ DFETFOFFDelay\ 0x92F3\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:DFETF:OFF\ Delay\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#define\ VSSFFailThreshold\ 0x92F4\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VSSF:Fail\ Threshold\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#define\ VSSFDelay\ 0x92F6\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:VSSF:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#define\ PF2LVLDelay\ 0x92F7\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:2LVL:Delay\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#define\ LFOFDelay\ 0x92F8\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:LFOF:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#define\ HWMXDelay\ 0x92F9\ \ \ \ \ \ }\textcolor{comment}{//Permanent\ Fail:HWMX:Delay\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00277\ \textcolor{preprocessor}{\#define\ SecuritySettings\ 0x9256\ \ \ \ \ \ }\textcolor{comment}{//Security:Settings:Security\ Settings\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00278\ \textcolor{preprocessor}{\#define\ UnsealKeyStep1\ 0x9257\ \ \ \ \ \ }\textcolor{comment}{//Security:Keys:Unseal\ Key\ Step\ 1\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00279\ \textcolor{preprocessor}{\#define\ UnsealKeyStep2\ 0x9259\ \ \ \ \ \ }\textcolor{comment}{//Security:Keys:Unseal\ Key\ Step\ 2\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#define\ FullAccessKeyStep1\ 0x925B\ \ \ \ \ \ }\textcolor{comment}{//Security:Keys:Full\ Access\ Key\ Step\ 1\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00281\ \textcolor{preprocessor}{\#define\ FullAccessKeyStep2\ 0x925D\ \ \ \ \ \ }\textcolor{comment}{//Security:Keys:Full\ Access\ Key\ Step\ 2\ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \textcolor{comment}{//Direct\ Commands\ }}
+\DoxyCodeLine{00284\ \textcolor{preprocessor}{\#define\ ControlStatus\ 0x00}}
+\DoxyCodeLine{00285\ \textcolor{preprocessor}{\#define\ SafetyAlertA\ 0x02}}
+\DoxyCodeLine{00286\ \textcolor{preprocessor}{\#define\ SafetyStatusA\ 0x03}}
+\DoxyCodeLine{00287\ \textcolor{preprocessor}{\#define\ SafetyAlertB\ 0x04}}
+\DoxyCodeLine{00288\ \textcolor{preprocessor}{\#define\ SafetyStatusB\ 0x05}}
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#define\ SafetyAlertC\ 0x06}}
+\DoxyCodeLine{00290\ \textcolor{preprocessor}{\#define\ SafetyStatusC\ 0x07}}
+\DoxyCodeLine{00291\ \textcolor{preprocessor}{\#define\ PFAlertA\ 0x0A}}
+\DoxyCodeLine{00292\ \textcolor{preprocessor}{\#define\ PFStatusA\ 0x0B}}
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\#define\ PFAlertB\ 0x0C}}
+\DoxyCodeLine{00294\ \textcolor{preprocessor}{\#define\ PFStatusB\ 0x0D}}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#define\ PFAlertC\ 0x0E}}
+\DoxyCodeLine{00296\ \textcolor{preprocessor}{\#define\ PFStatusC\ 0x0F}}
+\DoxyCodeLine{00297\ \textcolor{preprocessor}{\#define\ PFAlertD\ 0x10}}
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\#define\ PFStatusD\ 0x11}}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#define\ BatteryStatus\ 0x12}}
+\DoxyCodeLine{00300\ \textcolor{preprocessor}{\#define\ Cell1Voltage\ 0x14}}
+\DoxyCodeLine{00301\ \textcolor{preprocessor}{\#define\ Cell2Voltage\ 0x16}}
+\DoxyCodeLine{00302\ \textcolor{preprocessor}{\#define\ Cell3Voltage\ 0x18}}
+\DoxyCodeLine{00303\ \textcolor{preprocessor}{\#define\ Cell4Voltage\ 0x1A}}
+\DoxyCodeLine{00304\ \textcolor{preprocessor}{\#define\ Cell5Voltage\ 0x1C}}
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#define\ Cell6Voltage\ 0x1E}}
+\DoxyCodeLine{00306\ \textcolor{preprocessor}{\#define\ Cell7Voltage\ 0x20}}
+\DoxyCodeLine{00307\ \textcolor{preprocessor}{\#define\ Cell8Voltage\ 0x22}}
+\DoxyCodeLine{00308\ \textcolor{preprocessor}{\#define\ Cell9Voltage\ 0x24}}
+\DoxyCodeLine{00309\ \textcolor{preprocessor}{\#define\ Cell10Voltage\ 0x26}}
+\DoxyCodeLine{00310\ \textcolor{preprocessor}{\#define\ Cell11Voltage\ 0x28}}
+\DoxyCodeLine{00311\ \textcolor{preprocessor}{\#define\ Cell12Voltage\ 0x2A}}
+\DoxyCodeLine{00312\ \textcolor{preprocessor}{\#define\ Cell13Voltage\ 0x2C}}
+\DoxyCodeLine{00313\ \textcolor{preprocessor}{\#define\ Cell14Voltage\ 0x2E}}
+\DoxyCodeLine{00314\ \textcolor{preprocessor}{\#define\ Cell15Voltage\ 0x30}}
+\DoxyCodeLine{00315\ \textcolor{preprocessor}{\#define\ Cell16Voltage\ 0x32}}
+\DoxyCodeLine{00316\ \textcolor{preprocessor}{\#define\ StackVoltage\ 0x34}}
+\DoxyCodeLine{00317\ \textcolor{preprocessor}{\#define\ PACKPinVoltage\ 0x36}}
+\DoxyCodeLine{00318\ \textcolor{preprocessor}{\#define\ LDPinVoltage\ 0x38}}
+\DoxyCodeLine{00319\ \textcolor{preprocessor}{\#define\ CC2Current\ 0x3A}}
+\DoxyCodeLine{00320\ \textcolor{preprocessor}{\#define\ AlarmStatus\ 0x62}}
+\DoxyCodeLine{00321\ \textcolor{preprocessor}{\#define\ AlarmRawStatus\ 0x64}}
+\DoxyCodeLine{00322\ \textcolor{preprocessor}{\#define\ AlarmEnable\ 0x66}}
+\DoxyCodeLine{00323\ \textcolor{preprocessor}{\#define\ IntTemperature\ 0x68}}
+\DoxyCodeLine{00324\ \textcolor{preprocessor}{\#define\ CFETOFFTemperature\ 0x6A}}
+\DoxyCodeLine{00325\ \textcolor{preprocessor}{\#define\ DFETOFFTemperature\ 0x6C}}
+\DoxyCodeLine{00326\ \textcolor{preprocessor}{\#define\ ALERTTemperature\ 0x6E}}
+\DoxyCodeLine{00327\ \textcolor{preprocessor}{\#define\ TS1Temperature\ 0x70}}
+\DoxyCodeLine{00328\ \textcolor{preprocessor}{\#define\ TS2Temperature\ 0x72}}
+\DoxyCodeLine{00329\ \textcolor{preprocessor}{\#define\ TS3Temperature\ 0x74}}
+\DoxyCodeLine{00330\ \textcolor{preprocessor}{\#define\ HDQTemperature\ 0x76}}
+\DoxyCodeLine{00331\ \textcolor{preprocessor}{\#define\ DCHGTemperature\ 0x78}}
+\DoxyCodeLine{00332\ \textcolor{preprocessor}{\#define\ DDSGTemperature\ 0x7A}}
+\DoxyCodeLine{00333\ \textcolor{preprocessor}{\#define\ FETStatus\ 0x7F}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \textcolor{comment}{//Subcommands\ }}
+\DoxyCodeLine{00336\ \textcolor{preprocessor}{\#define\ DEVICE\_NUMBER\ 0x0001}}
+\DoxyCodeLine{00337\ \textcolor{preprocessor}{\#define\ FW\_VERSION\ 0x0002}}
+\DoxyCodeLine{00338\ \textcolor{preprocessor}{\#define\ HW\_VERSION\ 0x0003}}
+\DoxyCodeLine{00339\ \textcolor{preprocessor}{\#define\ IROM\_SIG\ 0x0004}}
+\DoxyCodeLine{00340\ \textcolor{preprocessor}{\#define\ STATIC\_CFG\_SIG\ 0x0005}}
+\DoxyCodeLine{00341\ \textcolor{preprocessor}{\#define\ PREV\_MACWRITE\ 0x0007}}
+\DoxyCodeLine{00342\ \textcolor{preprocessor}{\#define\ DROM\_SIG\ 0x0009}}
+\DoxyCodeLine{00343\ \textcolor{preprocessor}{\#define\ SECURITY\_KEYS\ 0x0035}}
+\DoxyCodeLine{00344\ \textcolor{preprocessor}{\#define\ SAVED\_PF\_STATUS\ 0x0053}}
+\DoxyCodeLine{00345\ \textcolor{preprocessor}{\#define\ MANUFACTURINGSTATUS\ 0x0057}}
+\DoxyCodeLine{00346\ \textcolor{preprocessor}{\#define\ MANU\_DATA\ 0x0070}}
+\DoxyCodeLine{00347\ \textcolor{preprocessor}{\#define\ DASTATUS1\ 0x0071}}
+\DoxyCodeLine{00348\ \textcolor{preprocessor}{\#define\ DASTATUS2\ 0x0072}}
+\DoxyCodeLine{00349\ \textcolor{preprocessor}{\#define\ DASTATUS3\ 0x0073}}
+\DoxyCodeLine{00350\ \textcolor{preprocessor}{\#define\ DASTATUS4\ 0x0074}}
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\#define\ DASTATUS5\ 0x0075}}
+\DoxyCodeLine{00352\ \textcolor{preprocessor}{\#define\ DASTATUS6\ 0x0076}}
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#define\ DASTATUS7\ 0x0077}}
+\DoxyCodeLine{00354\ \textcolor{preprocessor}{\#define\ CUV\_SNAPSHOT\ 0x0080}}
+\DoxyCodeLine{00355\ \textcolor{preprocessor}{\#define\ COV\_SNAPSHOT\ 0X0081}}
+\DoxyCodeLine{00356\ \textcolor{preprocessor}{\#define\ CB\_ACTIVE\_CELLS\ 0x0083}}
+\DoxyCodeLine{00357\ \textcolor{preprocessor}{\#define\ CB\_SET\_LVL\ 0x0084}}
+\DoxyCodeLine{00358\ \textcolor{preprocessor}{\#define\ CBSTATUS1\ 0x0085}}
+\DoxyCodeLine{00359\ \textcolor{preprocessor}{\#define\ CBSTATUS2\ 0x0086}}
+\DoxyCodeLine{00360\ \textcolor{preprocessor}{\#define\ CBSTATUS3\ 0x0087}}
+\DoxyCodeLine{00361\ \textcolor{preprocessor}{\#define\ FET\_CONTROL\ 0x0097}}
+\DoxyCodeLine{00362\ \textcolor{preprocessor}{\#define\ REG12\_CONTROL\ 0x0098}}
+\DoxyCodeLine{00363\ \textcolor{preprocessor}{\#define\ OTP\_WR\_CHECK\ 0x00A0}}
+\DoxyCodeLine{00364\ \textcolor{preprocessor}{\#define\ OTP\_WRITE\ 0x00A1}}
+\DoxyCodeLine{00365\ \textcolor{preprocessor}{\#define\ READ\_CAL1\ 0xF081}}
+\DoxyCodeLine{00366\ \textcolor{preprocessor}{\#define\ CAL\_CUV\ 0xF090}}
+\DoxyCodeLine{00367\ \textcolor{preprocessor}{\#define\ CAL\_COV\ 0xF091}}
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \textcolor{comment}{//\ Command\ Only\ Subcommands\ }}
+\DoxyCodeLine{00370\ \textcolor{preprocessor}{\#define\ EXIT\_DEEPSLEEP\ 0x000E}}
+\DoxyCodeLine{00371\ \textcolor{preprocessor}{\#define\ DEEPSLEEP\ 0x000F}}
+\DoxyCodeLine{00372\ \textcolor{preprocessor}{\#define\ SHUTDOWN\ 0x0010}}
+\DoxyCodeLine{00373\ \textcolor{preprocessor}{\#define\ BQ769x2\_RESET\ 0x0012\ }\textcolor{comment}{//"{}RESET"{}\ in\ documentation}}
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#define\ PDSGTEST\ 0x001C}}
+\DoxyCodeLine{00375\ \textcolor{preprocessor}{\#define\ FUSE\_TOGGLE\ 0x001D}}
+\DoxyCodeLine{00376\ \textcolor{preprocessor}{\#define\ PCHGTEST\ 0x001E}}
+\DoxyCodeLine{00377\ \textcolor{preprocessor}{\#define\ CHGTEST\ 0x001F}}
+\DoxyCodeLine{00378\ \textcolor{preprocessor}{\#define\ DSGTEST\ 0x0020}}
+\DoxyCodeLine{00379\ \textcolor{preprocessor}{\#define\ FET\_ENABLE\ 0x0022}}
+\DoxyCodeLine{00380\ \textcolor{preprocessor}{\#define\ PF\_ENABLE\ 0x0024}}
+\DoxyCodeLine{00381\ \textcolor{preprocessor}{\#define\ PF\_RESET\ 0x0029}}
+\DoxyCodeLine{00382\ \textcolor{preprocessor}{\#define\ SEAL\ 0x0030}}
+\DoxyCodeLine{00383\ \textcolor{preprocessor}{\#define\ RESET\_PASSQ\ 0x0082}}
+\DoxyCodeLine{00384\ \textcolor{preprocessor}{\#define\ PTO\_RECOVER\ 0x008A}}
+\DoxyCodeLine{00385\ \textcolor{preprocessor}{\#define\ SET\_CFGUPDATE\ 0x0090}}
+\DoxyCodeLine{00386\ \textcolor{preprocessor}{\#define\ EXIT\_CFGUPDATE\ 0x0092}}
+\DoxyCodeLine{00387\ \textcolor{preprocessor}{\#define\ DSG\_PDSG\_OFF\ 0x0093}}
+\DoxyCodeLine{00388\ \textcolor{preprocessor}{\#define\ CHG\_PCHG\_OFF\ 0x0094}}
+\DoxyCodeLine{00389\ \textcolor{preprocessor}{\#define\ ALL\_FETS\_OFF\ 0x0095}}
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\#define\ ALL\_FETS\_ON\ 0x0096}}
+\DoxyCodeLine{00391\ \textcolor{preprocessor}{\#define\ SLEEP\_ENABLE\ 0x0099}}
+\DoxyCodeLine{00392\ \textcolor{preprocessor}{\#define\ SLEEP\_DISABLE\ 0x009A}}
+\DoxyCodeLine{00393\ \textcolor{preprocessor}{\#define\ OCDL\_RECOVER\ 0x009B}}
+\DoxyCodeLine{00394\ \textcolor{preprocessor}{\#define\ SCDL\_RECOVER\ 0x009C}}
+\DoxyCodeLine{00395\ \textcolor{preprocessor}{\#define\ LOAD\_DETECT\_RESTART\ 0x009D}}
+\DoxyCodeLine{00396\ \textcolor{preprocessor}{\#define\ LOAD\_DETECT\_ON\ 0x009E}}
+\DoxyCodeLine{00397\ \textcolor{preprocessor}{\#define\ LOAD\_DETECT\_OFF\ 0x009F}}
+\DoxyCodeLine{00398\ \textcolor{preprocessor}{\#define\ CFETOFF\_LO\ 0x2800}}
+\DoxyCodeLine{00399\ \textcolor{preprocessor}{\#define\ DFETOFF\_LO\ 0x2801}}
+\DoxyCodeLine{00400\ \textcolor{preprocessor}{\#define\ ALERT\_LO\ 0x2802}}
+\DoxyCodeLine{00401\ \textcolor{preprocessor}{\#define\ HDQ\_LO\ 0x2806}}
+\DoxyCodeLine{00402\ \textcolor{preprocessor}{\#define\ DCHG\_LO\ 0x2807}}
+\DoxyCodeLine{00403\ \textcolor{preprocessor}{\#define\ DDSG\_LO\ 0x2808}}
+\DoxyCodeLine{00404\ \textcolor{preprocessor}{\#define\ CFETOFF\_HI\ 0x2810}}
+\DoxyCodeLine{00405\ \textcolor{preprocessor}{\#define\ DFETOFF\_HI\ 0x2811}}
+\DoxyCodeLine{00406\ \textcolor{preprocessor}{\#define\ ALERT\_HI\ 0x2812}}
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\#define\ HDQ\_HI\ 0x2816}}
+\DoxyCodeLine{00408\ \textcolor{preprocessor}{\#define\ DCHG\_HI\ 0x2817}}
+\DoxyCodeLine{00409\ \textcolor{preprocessor}{\#define\ DDSG\_HI\ 0x2818}}
+\DoxyCodeLine{00410\ \textcolor{preprocessor}{\#define\ PF\_FORCE\_A\ 0x2857}}
+\DoxyCodeLine{00411\ \textcolor{preprocessor}{\#define\ PF\_FORCE\_B\ 0x29A3}}
+\DoxyCodeLine{00412\ \textcolor{preprocessor}{\#define\ SWAP\_COMM\_MODE\ 0x29BC}}
+\DoxyCodeLine{00413\ \textcolor{preprocessor}{\#define\ SWAP\_TO\_I2C\ 0x29E7}}
+\DoxyCodeLine{00414\ \textcolor{preprocessor}{\#define\ SWAP\_TO\_SPI\ 0x7C35}}
+\DoxyCodeLine{00415\ \textcolor{preprocessor}{\#define\ SWAP\_TO\_HDQ\ 0x7C40}}
+\DoxyCodeLine{00416\ }
+\DoxyCodeLine{00417\ }
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/LIBRERIAS-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00420\ \textcolor{preprocessor}{\#include\ <Wire.h>}}
+\DoxyCodeLine{00421\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/CLASES-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00424\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_b_q76942}{BQ76942}}\{}
+\DoxyCodeLine{00425\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00426\ \ \ \ \ }
+\DoxyCodeLine{00427\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_b_q76942_ae16270eb143360ff8af24a729a6bbaa2}{bqAdress}};\ }
+\DoxyCodeLine{00428\ }
+\DoxyCodeLine{00429\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00437\ \ \ \ \ \mbox{\hyperlink{class_b_q76942}{BQ76942}}(\ uint8\_t\ \_bqAdress\ );}
+\DoxyCodeLine{00438\ \ \ \ \ }
+\DoxyCodeLine{00439\ }
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_q76942_a65081e4eadfd2c44557a61107e25f04e}{begin}}();}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_q76942_a3bb1759b7aee802472a5815fd0dfa796}{defaultSettings}}();}
+\DoxyCodeLine{00461\ }
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00477\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_b_q76942_a1961025cb397c0e5f2be02f0abf539e8}{checkConnection}}\ ();}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00479\ }
+\DoxyCodeLine{00497\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_b_q76942_adbebadca4a2c6224f066ab3f1702589a}{requestRegisters}}\ (uint8\_t\ reg,\ uint8\_t\ size\ );}
+\DoxyCodeLine{00498\ }
+\DoxyCodeLine{00499\ }
+\DoxyCodeLine{00504\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{class_b_q76942_a217e621b29e9d677da551ec2cfe10c77}{i2cWrite}}(uint8\_t\ reg,\ uint8\_t*\ data,\ uint8\_t\ size);}
+\DoxyCodeLine{00505\ }
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ }
+\DoxyCodeLine{00508\ }
+\DoxyCodeLine{00517\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{class_b_q76942_a81d22d4129cea255a52b2c61b6f0027b}{readCellVoltage}}\ (\ uint8\_t\ Ncell\ );}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00519\ }
+\DoxyCodeLine{00520\ }
+\DoxyCodeLine{00521\ \ \ \ \ \textcolor{comment}{//\ A\ partir\ de\ este\ punto\ el\ código\ está\ basado\ en\ los\ ejemplos\ proporcionados\ por\ el\ fabricante}}
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{comment}{//\ y\ modificado\ para\ poder\ ser\ utilizado\ en\ el\ microcontrolador\ esp32.}}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ }
+\DoxyCodeLine{00525\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_q76942_af8798bf22fc2c9d548d22b79f3c238f3}{i2cWriteReg}}(uint8\_t\ reg\_addr,\ uint8\_t\ *reg\_data,\ uint8\_t\ count);}
+\DoxyCodeLine{00526\ }
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_q76942_a1bd3fc5b03698907cd9624de66e1b853}{bqSetRegister}}(uint16\_t\ reg\_addr,\ uint32\_t\ reg\_data,\ uint8\_t\ datalen);}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00533\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_b_q76942_a87bad682c4fa751fb67ca000ba6889ce}{CommandSubcommands}}(uint16\_t\ command);}
+\DoxyCodeLine{00534\ }
+\DoxyCodeLine{00535\ }
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ \};}
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00541\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,178 @@
+\doxysection{BQ76942 Class Reference}
+\hypertarget{class_b_q76942}{}\label{class_b_q76942}\index{BQ76942@{BQ76942}}
+
+
+{\ttfamily \#include $<$BQ76942.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_q76942_a19cf900c2a9595e4af02145cddeffe84}{BQ76942}} (uint8\+\_\+t \+\_\+bq\+Adress)
+\begin{DoxyCompactList}\small\item\em Este es el constructor para crear un objeto del tipo \doxylink{class_b_q76942}{BQ76942}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_q76942_a65081e4eadfd2c44557a61107e25f04e}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Esta función permite inicializar todos los elementos necesarios para el correcto funcionamiento del integrado \doxylink{class_b_q76942}{BQ76942}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_q76942_a3bb1759b7aee802472a5815fd0dfa796}{default\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Esta función permite configurar al integrado a ciertos valores por defecto ~\newline
+ que el usuario puede modificar a conveniencia en esta librería. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_q76942_a1961025cb397c0e5f2be02f0abf539e8}{check\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em Esta función se utiliza para conocer el estado de conexión entre el dispositivo maestro y esclavo. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_q76942_adbebadca4a2c6224f066ab3f1702589a}{request\+Registers}} (uint8\+\_\+t reg, uint8\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Con esta función se pueden solicitar los registros que se deseen leer del dispositivo esclavo. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_q76942_a217e621b29e9d677da551ec2cfe10c77}{i2c\+Write}} (uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t size)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_b_q76942_a81d22d4129cea255a52b2c61b6f0027b}{read\+Cell\+Voltage}} (uint8\+\_\+t Ncell)
+\begin{DoxyCompactList}\small\item\em Con esta función se puede leer el valor de voltaje de una celda en específico en mV. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_q76942_af8798bf22fc2c9d548d22b79f3c238f3}{i2c\+Write\+Reg}} (uint8\+\_\+t reg\+\_\+addr, uint8\+\_\+t \texorpdfstring{$\ast$}{*}reg\+\_\+data, uint8\+\_\+t count)
+\item 
+void \mbox{\hyperlink{class_b_q76942_a1bd3fc5b03698907cd9624de66e1b853}{bq\+Set\+Register}} (uint16\+\_\+t reg\+\_\+addr, uint32\+\_\+t reg\+\_\+data, uint8\+\_\+t datalen)
+\begin{DoxyCompactList}\small\item\em Funcion utilizada para realizar cambios en los registros de configuración. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_b_q76942_a87bad682c4fa751fb67ca000ba6889ce}{Command\+Subcommands}} (uint16\+\_\+t command)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_b_q76942_ae16270eb143360ff8af24a729a6bbaa2}{bq\+Adress}}
+\begin{DoxyCompactList}\small\item\em Direccion I2C del integrado \doxylink{class_b_q76942}{BQ76942}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_b_q76942_a19cf900c2a9595e4af02145cddeffe84}\label{class_b_q76942_a19cf900c2a9595e4af02145cddeffe84} 
+\index{BQ76942@{BQ76942}!BQ76942@{BQ76942}}
+\index{BQ76942@{BQ76942}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{BQ76942()}{BQ76942()}}
+{\footnotesize\ttfamily BQ76942\+::\+BQ76942 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{\+\_\+bq\+Adress }\end{DoxyParamCaption})}
+
+
+
+Este es el constructor para crear un objeto del tipo \doxylink{class_b_q76942}{BQ76942}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+bq\+Addres} & Dirección I2C del integrado \doxylink{class_b_q76942}{BQ76942}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_b_q76942_a65081e4eadfd2c44557a61107e25f04e}\label{class_b_q76942_a65081e4eadfd2c44557a61107e25f04e} 
+\index{BQ76942@{BQ76942}!begin@{begin}}
+\index{begin@{begin}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily void BQ76942\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Esta función permite inicializar todos los elementos necesarios para el correcto funcionamiento del integrado \doxylink{class_b_q76942}{BQ76942}. 
+
+\Hypertarget{class_b_q76942_a1bd3fc5b03698907cd9624de66e1b853}\label{class_b_q76942_a1bd3fc5b03698907cd9624de66e1b853} 
+\index{BQ76942@{BQ76942}!bqSetRegister@{bqSetRegister}}
+\index{bqSetRegister@{bqSetRegister}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{bqSetRegister()}{bqSetRegister()}}
+{\footnotesize\ttfamily void BQ76942\+::bq\+Set\+Register (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{reg\+\_\+addr,  }\item[{uint32\+\_\+t}]{reg\+\_\+data,  }\item[{uint8\+\_\+t}]{datalen }\end{DoxyParamCaption})}
+
+
+
+Funcion utilizada para realizar cambios en los registros de configuración. 
+
+\Hypertarget{class_b_q76942_a1961025cb397c0e5f2be02f0abf539e8}\label{class_b_q76942_a1961025cb397c0e5f2be02f0abf539e8} 
+\index{BQ76942@{BQ76942}!checkConnection@{checkConnection}}
+\index{checkConnection@{checkConnection}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{checkConnection()}{checkConnection()}}
+{\footnotesize\ttfamily uint8\+\_\+t BQ76942\+::check\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Esta función se utiliza para conocer el estado de conexión entre el dispositivo maestro y esclavo. 
+
+\begin{DoxyReturn}{Returns}
+0\+: Comunicación exitosa. 1\+: Cantidad de datos mayor que el permitido por el buffer. 2\+: NACK recibido durante la transmision de la direccción. 3\+: NACK recibido durante la transmision de información. 4\+: Error desconocido. 5\+: Timeout. 
+\end{DoxyReturn}
+\Hypertarget{class_b_q76942_a87bad682c4fa751fb67ca000ba6889ce}\label{class_b_q76942_a87bad682c4fa751fb67ca000ba6889ce} 
+\index{BQ76942@{BQ76942}!CommandSubcommands@{CommandSubcommands}}
+\index{CommandSubcommands@{CommandSubcommands}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{CommandSubcommands()}{CommandSubcommands()}}
+{\footnotesize\ttfamily void BQ76942\+::\+Command\+Subcommands (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{command }\end{DoxyParamCaption})}
+
+\Hypertarget{class_b_q76942_a3bb1759b7aee802472a5815fd0dfa796}\label{class_b_q76942_a3bb1759b7aee802472a5815fd0dfa796} 
+\index{BQ76942@{BQ76942}!defaultSettings@{defaultSettings}}
+\index{defaultSettings@{defaultSettings}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{defaultSettings()}{defaultSettings()}}
+{\footnotesize\ttfamily void BQ76942\+::default\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Esta función permite configurar al integrado a ciertos valores por defecto ~\newline
+ que el usuario puede modificar a conveniencia en esta librería. 
+
+\begin{DoxyNote}{Note}
+El formato de esta función es como se recomienda realizar una función propia en el codigo principal en caso de necesitar realizar cambios en los registros de configuración del integrado. 
+\end{DoxyNote}
+\Hypertarget{class_b_q76942_a217e621b29e9d677da551ec2cfe10c77}\label{class_b_q76942_a217e621b29e9d677da551ec2cfe10c77} 
+\index{BQ76942@{BQ76942}!i2cWrite@{i2cWrite}}
+\index{i2cWrite@{i2cWrite}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{i2cWrite()}{i2cWrite()}}
+{\footnotesize\ttfamily uint8\+\_\+t BQ76942\+::i2c\+Write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data,  }\item[{uint8\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+\Hypertarget{class_b_q76942_af8798bf22fc2c9d548d22b79f3c238f3}\label{class_b_q76942_af8798bf22fc2c9d548d22b79f3c238f3} 
+\index{BQ76942@{BQ76942}!i2cWriteReg@{i2cWriteReg}}
+\index{i2cWriteReg@{i2cWriteReg}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{i2cWriteReg()}{i2cWriteReg()}}
+{\footnotesize\ttfamily void BQ76942\+::i2c\+Write\+Reg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+\_\+addr,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{reg\+\_\+data,  }\item[{uint8\+\_\+t}]{count }\end{DoxyParamCaption})}
+
+\Hypertarget{class_b_q76942_a81d22d4129cea255a52b2c61b6f0027b}\label{class_b_q76942_a81d22d4129cea255a52b2c61b6f0027b} 
+\index{BQ76942@{BQ76942}!readCellVoltage@{readCellVoltage}}
+\index{readCellVoltage@{readCellVoltage}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{readCellVoltage()}{readCellVoltage()}}
+{\footnotesize\ttfamily uint16\+\_\+t BQ76942\+::read\+Cell\+Voltage (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{Ncell }\end{DoxyParamCaption})}
+
+
+
+Con esta función se puede leer el valor de voltaje de una celda en específico en mV. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ncell} & Celda de la cual se desea conocer el voltaje, el valor puede estar entre 1-\/10. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_b_q76942_adbebadca4a2c6224f066ab3f1702589a}\label{class_b_q76942_adbebadca4a2c6224f066ab3f1702589a} 
+\index{BQ76942@{BQ76942}!requestRegisters@{requestRegisters}}
+\index{requestRegisters@{requestRegisters}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{requestRegisters()}{requestRegisters()}}
+{\footnotesize\ttfamily uint8\+\_\+t BQ76942\+::request\+Registers (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Con esta función se pueden solicitar los registros que se deseen leer del dispositivo esclavo. 
+
+\begin{DoxyNote}{Note}
+Es necesario utilizar posteriormente la función Wire.\+read() para leer los datos solicitados.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Dirección de registro al cual se desea realizar la lectura. \\
+\hline
+{\em size} & Cantidad de bytes a solicitar.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0\+: Comunicación exitosa. 1\+: Cantidad de datos mayor que el permitido por el buffer. 2\+: NACK recibido durante la transmision de la direccción. 3\+: NACK recibido durante la transmision de información. 4\+: Error desconocido. 5\+: Timeout. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_b_q76942_ae16270eb143360ff8af24a729a6bbaa2}\label{class_b_q76942_ae16270eb143360ff8af24a729a6bbaa2} 
+\index{BQ76942@{BQ76942}!bqAdress@{bqAdress}}
+\index{bqAdress@{bqAdress}!BQ76942@{BQ76942}}
+\doxysubsubsection{\texorpdfstring{bqAdress}{bqAdress}}
+{\footnotesize\ttfamily uint8\+\_\+t BQ76942\+::bq\+Adress\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Direccion I2C del integrado \doxylink{class_b_q76942}{BQ76942}. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/maqui/\+Documents/\+Git\+Hub/\+BQ769x2/\+BQ769x2\+\_\+\+ESP32/lib/\+BQ76942/\mbox{\hyperlink{_b_q76942_8h}{BQ76942.\+h}}\item 
+C\+:/\+Users/maqui/\+Documents/\+Git\+Hub/\+BQ769x2/\+BQ769x2\+\_\+\+ESP32/lib/\+BQ76942/\mbox{\hyperlink{_b_q76942_8cpp}{BQ76942.\+cpp}}\end{DoxyCompactItemize}
