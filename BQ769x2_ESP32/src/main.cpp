@@ -1,7 +1,7 @@
 //Direccion del sensor BMP280: 0x76
 
 //----------------------------------LIBRERIAS----------------------------------
-#include <Wire.h>
+//#include <Wire.h>
 #include <Arduino.h>
 #include <stdint.h>
 
@@ -52,7 +52,7 @@ void setup() {
     voltaje = BMS1.readCellVoltage(10);
     Serial.println(voltaje);
 
-    //___Hacer una prueba de escritura a la configuracion del BQ76942___
+    //__Hacer una prueba de escritura a la configuracion del BQ76942__
     //Leer registros antes de la sobreescritura
     Serial.println("Lectura de <Enable protections A> antes del cambio:");
     Serial.println(BMS1.readEnableProtectionsA(), HEX);
@@ -67,7 +67,7 @@ void setup() {
     Serial.println("Leyendo subcomando: Device Number");
     Serial.println(BMS1.readDeviceNo());
 
-    //_______________________________Pruebas de funciones de usuario______________________________
+    //__________Pruebas de funciones de usuario___________
     
     Serial.println("Leyendo bit safetyAlertsA.COV:");
     bit = BMS1.safetyAlertA_bits().COV;
@@ -88,21 +88,27 @@ void setup() {
 
     //Modificar el registro Enable protections A
     Serial.println("Leyendo EnableProtectionsA antes del cambio:");
-    Serial.println(BMS1.readEnableProtectionsA());
+    Serial.println(BMS1.readEnableProtectionsA(), HEX);
 
     BMS1.writeEnableProtectionsA(0xBB);
 
     Serial.println("Leyendo EnableProtectionsA después del cambio:");
-    Serial.println(BMS1.readEnableProtectionsA());
+    Serial.println(BMS1.readEnableProtectionsA(), HEX);
 
-    Serial.println("/n ___Leazilar un cambio bitwise a Enable protections A___");
-    Serial.println("Leyendo bit EnableProtectonsA.OCC antes del cambio:");
+    Serial.println(" ");
+    Serial.println("__Realizar un cambio bitwise a Enable protections A__");
+    Serial.println("Leyendo bit EnableProtectionsA.OCC antes del cambio:");
+    bit = BMS1.readEnableProtectionsA_bits().OCC;
+    Serial.println(bit);
+    //Realizar un cambio bitwise a Enable protections A
+    BMS1.overCurrenC(0);
+
+    Serial.println("Leyendo bit EnableProtectionsA.OCC después del cambio:");
     bit = BMS1.readEnableProtectionsA_bits().OCC;
     Serial.println(bit);
 
-    BMS1.writeEnableProtectionsA_OCC(0);
-
-    Serial.println("Leyendo bit EnableProtectonsA.OCC después del cambio:");
+    Serial.println("Nuevamente revertir dicho cambio y leer EnableProtectionsA.OCC:");
+    BMS1.overCurrenC(1);
     bit = BMS1.readEnableProtectionsA_bits().OCC;
     Serial.println(bit);
 

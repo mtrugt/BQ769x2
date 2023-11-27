@@ -1,3 +1,8 @@
+//En este documento se listan todas las estructuras para el manejo bitwise
+// de algunas funciones. Asi mismo, se definen todas las direcciones de 
+// comandos directos, subcomandos y "command only subcommands" del integrado 
+// BQ76942
+
 #include <stdint.h>
 
 //Alertas, estado y protecciones A

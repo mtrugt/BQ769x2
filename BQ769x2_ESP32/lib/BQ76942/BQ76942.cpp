@@ -349,12 +349,67 @@ void BQ76942::defaultSettings()				//OK
 	//POWERCONFIG
 	// Modificar inmediatamente los registros WK_SPD_x en 00 ya que la configuracion 
 	// por defecto en 01 genera bugs.
-	bqSetRegister(PowerConfig, 0x2980, 2);
+	bqSetRegister(PowerConfig, 0x2D80, 2);
+
+	//Vcell mode
+	// Cambiar a 5 la cantidad de celdas que se van a utilizar
+	bqSetRegister(VCellMode, 0x001F, 2);
+
+	//TS1 config
+	// Configura al termistor 1 para leer la temperatura de las celdas.
+	bqSetRegister(TS1Config, 0x07, 1);
+
+	//HDQ Pin Config
+	// No se utiliza un termistor externo.
+	bqSetRegister(HDQPinConfig, 0x00, 1);
 
     //PROTECCIONES A
 	// Activa las protecciones: SCD (short-circuit), OCD1 (over-current in discharge), OCC (over-current in charge),
 	// COV (over-voltage), CUV (under-voltage)
 	bqSetRegister(EnabledProtectionsA, 0xBC, 1);
+
+	//PROTECCIONES B
+	// Activa las protecciones de alta temperatura interna durante la descarga y durante la carga,
+	// tambien de de baja temperatura interna, durante la carga y durante la descarga.
+	bqSetRegister(EnabledProtectionsB, 0xF7, 1);
+
+	//CONFIGURACION DE BALANCEO DE CELDAS
+	// Configura el balanceo de las celdas en automático.
+	bqSetRegister(BalancingConfiguration, 0x31, 1);
+
+	//LIMITE DE BAJO VOLTAJE
+	// Configura el threshold para el bajo voltaje en 2479mV.
+	bqSetRegister(CUVThreshold, 0x31, 1);
+
+	//LIMITE DE ALTO VOLTAJE
+	// Configura el threshold para el alto voltaje en 4301mV.
+	bqSetRegister(COVThreshold, 0x55, 1);
+
+	//LIMITE DE SOBRE CORRIENTE (CARGA)
+	// Configura el límite de sobre corriente durante la carga en 10 A 
+	// asumiendo el uso de una resistencia de 1 mOhm para el muestreo.
+	bqSetRegister(OCCThreshold, 0x05, 1);
+
+	//LIMITE DE SOBRE CORRIENTE (DESCARGA)
+	// Configura el límite de sobre corriente durante la descarga en 20 A 
+	// asumiendo el uso de una resistencia de 1 mOhm para el muestreo.
+	bqSetRegister(OCD1Threshold, 0x0A, 1);
+
+	//LIMITE DE CORTO CIRCUITO
+	// Configura el límite de corriente para detectar un corto circuito en 100 A 
+	// asumiendo el uso de una resistencia de 1 mOhm para el muestreo.
+	bqSetRegister(SCDThreshold, 0x05, 1);
+
+	//DELAY CORTO CIRCUITO
+	// Si el límite de corriente para la detección de corto circuito se mantiene
+	// por un mínimo de 30 uS entonces se activa la protección por corto circuito.
+	bqSetRegister(SCDDelay, 0x03, 1);
+
+	//REANUDAR OPERACIONES
+	// Configura el reinicio de operaciones luego de la detección de un corto 
+	// circuito solamente luego de que se retire la carga.
+	bqSetRegister(SCDLLatchLimit, 0x01, 1);
+
 
     // Salir de CONFIGUPDATE mode  - Subcommand 0x0092
 	commandOnlySubcommands(EXIT_CFGUPDATE);
@@ -362,7 +417,7 @@ void BQ76942::defaultSettings()				//OK
 }
 
 
-//_____________________________________FUNCIONES A NIVEL DE USUARIO__________________________________
+//_____________________________________FUNCIONES NIVEL PRINCIPIANTE__________________________________
 
 
 //-----------------------------------Direct commands----------------------------------------------------
@@ -471,6 +526,10 @@ uint16_t BQ76942::ts3Temp()
 
     return temp;
 }
+//->
+
+
+
 
 //Funciones relacionadas a: Alerta, estado y protecciones A
 
@@ -561,7 +620,7 @@ void BQ76942::writeEnableProtectionsA( uint8_t value)			//OK
 
 }
 
-void BQ76942::writeEnableProtectionsA_SCD(bool value) 
+void BQ76942::shortCircuitD(bool value) 
 {	
 	uint8_t respuesta = 0;
 	uint8_t mask = 0b10000000;
@@ -581,7 +640,7 @@ void BQ76942::writeEnableProtectionsA_SCD(bool value)
 
 }
 
-void BQ76942::writeEnableProtectionsA_OCD2(bool value) 
+void BQ76942::overCurrentD2(bool value) 
 {	
 	uint8_t respuesta = 0;
 	uint8_t mask = 0b01000000;
@@ -601,7 +660,7 @@ void BQ76942::writeEnableProtectionsA_OCD2(bool value)
 
 }
 
-void BQ76942::writeEnableProtectionsA_OCD1(bool value) 
+void BQ76942::overCurrentD1(bool value) 
 {	
 	uint8_t respuesta = 0;
 	uint8_t mask = 0b00100000;
@@ -621,7 +680,7 @@ void BQ76942::writeEnableProtectionsA_OCD1(bool value)
 
 }
 
-void BQ76942::writeEnableProtectionsA_OCC(bool value) 
+void BQ76942::overCurrenC(bool value) 
 {	
 	uint8_t respuesta = 0;
 	uint8_t mask = 0b00010000;
@@ -641,7 +700,7 @@ void BQ76942::writeEnableProtectionsA_OCC(bool value)
 
 }
 
-void BQ76942::writeEnableProtectionsA_COV(bool value) 
+void BQ76942::cellOverVolt(bool value) 
 {	
 	uint8_t respuesta = 0;
 	uint8_t mask = 0b00001000;
@@ -661,7 +720,7 @@ void BQ76942::writeEnableProtectionsA_COV(bool value)
 
 }
 
-void BQ76942::writeEnableProtectionsA_CUV(bool value) 
+void BQ76942::cellUnderVolt(bool value) 
 {	
 	uint8_t respuesta = 0;
 	uint8_t mask = 0b00000100;
@@ -734,10 +793,6 @@ _safetyStatusB_bits BQ76942::safetyStatusB_bits()
 	return alerts;
 	
 }
-
-
-
-
 
 
 
